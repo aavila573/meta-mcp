@@ -8,6 +8,21 @@
 
 Full-coverage MCP server for **Instagram Graph API** (v25.0), **Threads API**, and **Meta platform** management.
 
+## When to Use
+
+Tell your AI assistant things like:
+
+- **"Post a photo to Instagram"** — publish photos, videos, reels, stories, and carousels
+- **"Publish a text post on Threads"** — text posts with polls, GIFs, link attachments, and topic tags
+- **"Get my Instagram follower count and insights"** — account and post-level analytics
+- **"Schedule a carousel post"** — multi-image albums on Instagram (2-10) or Threads (2-20)
+- **"Reply to comments on my latest post"** — read and respond to comments on both platforms
+- **"Cross-post to Instagram and Threads"** — use the built-in `content_publish` prompt
+- **"Get analytics for my Threads account"** — views, likes, replies, reposts, quotes, clicks
+- **"Manage Instagram DMs"** — list conversations, read messages, send replies
+
+> **AI Agent Integration**: See [`llms.txt`](llms.txt) for a machine-readable summary, or copy [`templates/CLAUDE.md`](templates/CLAUDE.md) / [`templates/AGENTS.md`](templates/AGENTS.md) into your project for automatic MCP discovery.
+
 ## Features
 
 - **57 tools** across Instagram (33), Threads (18), and Meta platform (6)

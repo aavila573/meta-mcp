@@ -1,0 +1,138 @@
+# meta-mcp
+
+> Full-coverage MCP server for Instagram Graph API (v25.0), Threads API, and Meta platform management. Publish content, manage comments, view insights, and handle DMs — all through AI assistants.
+
+## Package
+
+- npm: `@mikusnuz/meta-mcp`
+- Run: `npx @mikusnuz/meta-mcp`
+- GitHub: https://github.com/mikusnuz/meta-mcp
+
+## Environment Variables
+
+- `INSTAGRAM_ACCESS_TOKEN` (for Instagram) — Instagram Graph API access token
+- `INSTAGRAM_USER_ID` (for Instagram) — Instagram Business/Creator account ID
+- `THREADS_ACCESS_TOKEN` (for Threads) — Threads API access token
+- `THREADS_USER_ID` (for Threads) — Threads user ID
+- `META_APP_ID` (for token/webhook tools) — Meta App ID
+- `META_APP_SECRET` (for token/webhook tools) — Meta App Secret
+
+Only set variables for the platforms you use.
+
+## MCP Config
+
+```json
+{
+  "mcpServers": {
+    "meta": {
+      "command": "npx",
+      "args": ["-y", "@mikusnuz/meta-mcp"],
+      "env": {
+        "INSTAGRAM_ACCESS_TOKEN": "your_ig_token",
+        "INSTAGRAM_USER_ID": "your_ig_user_id",
+        "THREADS_ACCESS_TOKEN": "your_threads_token",
+        "THREADS_USER_ID": "your_threads_user_id"
+      }
+    }
+  }
+}
+```
+
+## Account Requirements
+
+- Instagram: Business or Creator account (free to switch in settings)
+- Threads: Any account
+- Meta token/webhook tools: Meta Developer App
+
+## Tools (57)
+
+### Meta Platform (6)
+- meta_exchange_token — Exchange short-lived token for long-lived (~60 days)
+- meta_refresh_token — Refresh a long-lived token before expiration
+- meta_debug_token — Inspect token validity, expiration, and scopes
+- meta_get_app_info — Get Meta App information
+- meta_subscribe_webhook — Subscribe to webhook notifications
+- meta_get_webhook_subscriptions — List current webhook subscriptions
+
+### Instagram — Publishing (6)
+- ig_publish_photo — Publish a photo post (supports alt_text)
+- ig_publish_video — Publish a video post
+- ig_publish_carousel — Publish a carousel/album (2-10 items, alt_text per item)
+- ig_publish_reel — Publish a Reel (supports alt_text)
+- ig_publish_story — Publish a Story (24hr)
+- ig_get_container_status — Check media container processing status
+
+### Instagram — Media (5)
+- ig_get_media_list — List published media
+- ig_get_media — Get media details
+- ig_delete_media — Delete a media post
+- ig_get_media_insights — Get media analytics (views, reach, saved, shares)
+- ig_toggle_comments — Enable/disable comments on a post
+
+### Instagram — Comments (7)
+- ig_get_comments — Get comments on a post
+- ig_get_comment — Get comment details
+- ig_post_comment — Post a comment
+- ig_get_replies — Get replies to a comment
+- ig_reply_to_comment — Reply to a comment
+- ig_hide_comment — Hide/unhide a comment
+- ig_delete_comment — Delete a comment
+
+### Instagram — Profile & Insights (5)
+- ig_get_profile — Get account profile info
+- ig_get_account_insights — Get account-level analytics (views, reach, follower_count)
+- ig_business_discovery — Look up another business account
+- ig_get_collaboration_invites — Get pending collaboration invites
+- ig_respond_collaboration_invite — Accept or decline collaboration invites
+
+### Instagram — Hashtags (4)
+- ig_search_hashtag — Search hashtag by name
+- ig_get_hashtag — Get hashtag info
+- ig_get_hashtag_recent — Get recent media for a hashtag
+- ig_get_hashtag_top — Get top media for a hashtag
+
+### Instagram — Mentions & Tags (2)
+- ig_get_mentioned_comments — Get comments mentioning you
+- ig_get_tagged_media — Get media you're tagged in
+
+### Instagram — Messaging (4)
+- ig_get_conversations — List DM conversations
+- ig_get_messages — Get messages in a conversation
+- ig_send_message — Send a DM
+- ig_get_message — Get message details
+
+### Threads — Publishing (7)
+- threads_publish_text — Publish text post (polls, GIFs, link attachments, topic tags, quote, spoiler)
+- threads_publish_image — Publish image post (alt_text, topic tags, spoiler)
+- threads_publish_video — Publish video post (alt_text, topic tags, spoiler)
+- threads_publish_carousel — Publish carousel (2-20 items, alt_text per item)
+- threads_delete_post — Delete a post (max 100/day)
+- threads_get_container_status — Check container processing status
+- threads_get_publishing_limit — Check remaining quota (250 posts/day)
+
+### Threads — Media & Search (3)
+- threads_get_posts — List published posts
+- threads_get_post — Get post details
+- threads_search_posts — Search public posts by keyword or topic tag
+
+### Threads — Replies (4)
+- threads_get_replies — Get replies to a post
+- threads_reply — Reply to a post (supports image/video attachments)
+- threads_hide_reply — Hide a reply
+- threads_unhide_reply — Unhide a reply
+
+### Threads — Profile (2)
+- threads_get_profile — Get Threads profile info
+- threads_get_user_threads — List user's threads
+
+### Threads — Insights (2)
+- threads_get_post_insights — Post analytics (views, likes, replies, reposts, quotes, clicks)
+- threads_get_user_insights — Account-level analytics
+
+## Resources
+- instagram://profile — Instagram account profile data
+- threads://profile — Threads account profile data
+
+## Prompts
+- content_publish — Cross-post content to Instagram and Threads
+- analytics_report — Generate combined analytics report
