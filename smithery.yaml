@@ -1,0 +1,28 @@
+# Smithery configuration file: https://smithery.ai/docs/config#smitheryyaml
+
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    properties:
+      instagramAccessToken:
+        type: string
+        description: Instagram Graph API access token
+      instagramUserId:
+        type: string
+        description: Instagram Business/Creator account ID
+      threadsAccessToken:
+        type: string
+        description: Threads API access token
+      threadsUserId:
+        type: string
+        description: Threads user ID
+      metaAppId:
+        type: string
+        description: Meta App ID (for token/webhook tools)
+      metaAppSecret:
+        type: string
+        description: Meta App Secret (for token/webhook tools)
+  commandFunction:
+    |-
+    config => ({ command: 'npx', args: ['-y', '@mikusnuz/meta-mcp'], env: { INSTAGRAM_ACCESS_TOKEN: config.instagramAccessToken || '', INSTAGRAM_USER_ID: config.instagramUserId || '', THREADS_ACCESS_TOKEN: config.threadsAccessToken || '', THREADS_USER_ID: config.threadsUserId || '', META_APP_ID: config.metaAppId || '', META_APP_SECRET: config.metaAppSecret || '' } })
