@@ -1,13 +1,10 @@
 #!/usr/bin/env node
-
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { loadConfig, MetaConfig } from "./config.js";
 import { MetaClient } from "./services/meta-client.js";
-
 // Meta platform tools
 import { registerMetaAuthTools } from "./tools/meta/auth.js";
-
 // Instagram tools
 import { registerIgPublishingTools } from "./tools/instagram/publishing.js";
 import { registerIgMediaTools } from "./tools/instagram/media.js";
@@ -16,14 +13,14 @@ import { registerIgProfileTools } from "./tools/instagram/profile.js";
 import { registerIgHashtagTools } from "./tools/instagram/hashtags.js";
 import { registerIgMentionTools } from "./tools/instagram/mentions.js";
 import { registerIgMessagingTools } from "./tools/instagram/messaging.js";
-
 // Threads tools
 import { registerThreadsPublishingTools } from "./tools/threads/publishing.js";
 import { registerThreadsMediaTools } from "./tools/threads/media.js";
 import { registerThreadsReplyTools } from "./tools/threads/replies.js";
 import { registerThreadsProfileTools } from "./tools/threads/profile.js";
 import { registerThreadsInsightTools } from "./tools/threads/insights.js";
-
+// Facebook tools
+import { registerFbPublishingTools } from "./tools/Facebook/fb-publishing.js";
 // Resources & Prompts
 import { registerInstagramResources } from "./resources/instagram.js";
 import { registerThreadsResources } from "./resources/threads.js";
@@ -51,6 +48,7 @@ registerThreadsMediaTools(server, client);
 registerThreadsReplyTools(server, client);
 registerThreadsProfileTools(server, client);
 registerThreadsInsightTools(server, client);
+registerFbPublishingTools(server);
 
 // Register resources
 registerInstagramResources(server, client);
@@ -70,13 +68,11 @@ main().catch((err) => {
 });
 
 // ── Smithery Sandbox ──
-
 export function createSandboxServer() {
   const sandbox = new McpServer({
     name: "meta-mcp",
     version: "2.0.0",
   });
-
   const mockConfig: MetaConfig = {
     appId: "",
     appSecret: "",
@@ -86,7 +82,6 @@ export function createSandboxServer() {
     threadsUserId: "",
   };
   const mockClient = new MetaClient(mockConfig);
-
   registerMetaAuthTools(sandbox, mockClient);
   registerIgPublishingTools(sandbox, mockClient);
   registerIgMediaTools(sandbox, mockClient);
@@ -100,9 +95,9 @@ export function createSandboxServer() {
   registerThreadsReplyTools(sandbox, mockClient);
   registerThreadsProfileTools(sandbox, mockClient);
   registerThreadsInsightTools(sandbox, mockClient);
+  registerFbPublishingTools(sandbox);
   registerInstagramResources(sandbox, mockClient);
   registerThreadsResources(sandbox, mockClient);
   registerPrompts(sandbox);
-
   return sandbox;
 }
