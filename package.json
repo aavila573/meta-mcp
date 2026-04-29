@@ -24,10 +24,11 @@
     "node": ">=18"
   },
   "scripts": {
-    "build": "tsc",
-    "start": "node dist/index.js",
-    "dev": "tsx src/index.ts"
-  },
+  "build": "tsc",
+  "prepare": "npm run build",
+  "start": "node dist/index.js",
+  "dev": "tsx src/index.ts"
+},
   "keywords": [
     "mcp",
     "meta",
