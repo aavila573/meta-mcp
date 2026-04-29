@@ -20,7 +20,7 @@ import { registerThreadsReplyTools } from "./tools/threads/replies.js";
 import { registerThreadsProfileTools } from "./tools/threads/profile.js";
 import { registerThreadsInsightTools } from "./tools/threads/insights.js";
 // Facebook tools
-import { registerFbPublishingTools } from "./tools/Facebook/fb-publishing.js";
+import { registerFbPublishingTools } from "./tools/facebook/fb-publishing.js";
 // Resources & Prompts
 import { registerInstagramResources } from "./resources/instagram.js";
 import { registerThreadsResources } from "./resources/threads.js";
